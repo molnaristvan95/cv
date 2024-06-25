@@ -14,9 +14,18 @@
     /* ------------------ base and templates ---------------------*/
     @import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap');
 
+    *,
+    html,
+    body,
+    body#main,
+    img {
+      cursor: none !important;
+    }
+
     *:root {
       font-size: 16px;
       --opened: 'page was opened: ??';
+      --verticalRuler: none;
     }
 
     * {
@@ -30,6 +39,17 @@
       margin: 0;
       background: #000;
       padding: 2vh 0 10vh 0;
+    }
+
+    #main::after {
+      content: '';
+      width: 1px;
+      height: 100vh;
+      top: 0;
+      left: calc(50% - 0.5px);
+      background: yellow;
+      position: fixed;
+      display: var(--verticalRuler);
     }
 
     body#main::before {
@@ -184,6 +204,7 @@
       border-color: #999;
       border-radius: 50% !important;
       animation: highlighting 4s ease-out 64;
+
     }
 
     @keyframes highlighting {
@@ -199,6 +220,8 @@
         border-color: #0ff;
       }
     }
+
+
 
     /* ------------------ targeted elements ---------------------*/
 
@@ -335,10 +358,90 @@
       }
     }
 
+    var {
+      position: fixed;
+      top: 4px;
+      right: 4px;
+      background: #555;
+      padding: 6px;
+      opacity: .3;
+      word-break: break-all;
+      word-wrap: break-word;
+      max-width: 25% !important;
+      transition: .3s linear all;
+      z-index: 99;
+    }
+
+    var:hover {
+      opacity: 1;
+    }
 
     /* ------------------ media queries ---------------------*/
 
+    @media (max-width:1024px) {
+      nav {
+        position: relative;
+      }
+
+      #name {
+        font-size: 40px;
+      }
+
+      #agehas {
+        top: 2%;
+        left: 58%;
+        font-size: 32px;
+      }
+
+      .mobile {
+        display: block !important;
+      }
+
+      article {
+        width: 50vw !important;
+        height: 50vw !important;
+        margin-left: 23%;
+        margin-top: -4vh;
+      }
+
+      ul {
+        clear: left !important;
+        margin-left: -7% !important;
+      }
+
+      hr:nth-of-type(1) {
+        margin-top: 3vh;
+      }
+
+      hr:nth-of-type(2),
+      hr:nth-of-type(3) {
+        margin-top: -2vh;
+      }
+    }
+
     /* ------------------ black list quick test ---------------------*/
+
+    .thisOneICallFunny {
+      width: 50px;
+      height: 50px;
+      position: fixed;
+      background: red;
+      z-index: 99999;
+      background: url('https://molnaristvan95.github.io/cv/cursorx.png');
+      background-size: cover;
+      animation: funny 5s linear infinite;
+      filter: contrast(4) !important;
+    }
+
+    @keyframes funny {
+      0% {
+        transform: rotateZ(0deg);
+      }
+
+      0% {
+        transform: rotateZ(-360deg);
+      }
+    }
 
   </style>
   <base target="_blank" href="https://molnaristvan95.github.io/cv/">
@@ -347,6 +450,7 @@
 
 <body id="main">
   <dialog id="sms" class="flex center">Hiba! Error!</dialog>
+  <var>device</var>
   <figure class="flex center equal">
     <img id="profilepic" src="https://molnaristvan95.github.io/cv/prof.png" alt="This is a picture about me" title="A picture 'bout me">
     <figcaption id="name">Ishtvan Stepanovich Ksenicz</figcaption>
@@ -356,10 +460,11 @@
     <ul>
       <li><img src="https://molnaristvan95.github.io/cv/locationpoint.jpeg" alt="Location point pin" title="Where am I live aproximetly?"> XVI, Budapest</li>
       <li><img src="https://molnaristvan95.github.io/cv/calendar.png" alt="Calendar of my birth" title="When did I born and where?"> august, <span id="bornage">1995</span>; Uzhgorod</li>
-      <li><img src="https://molnaristvan95.github.io/cv/cellphone.png" alt="Cellphone icon" title="Whats my number?"><del> +36 70 280 52 09</del> I never take unknown numbers</li>
+      <li><img src="https://molnaristvan95.github.io/cv/cellphone.png" alt="Cellphone icon" title="Whats my number?"><del> +36 70 280 52 09</del> <small>I never take unknown numbers</small></li>
       <li><img src="https://molnaristvan95.github.io/cv/envelope.jpg" alt="Envelope icon" title="My email address"> 1995molnaristvan22@gmail.com</li>
     </ul>
   </nav>
+  <hr class="mobile" style="display:none;">
   <section class="sectionDates clearfix">
     <article id="learnings">.--==## Studies ##==--.</article>
     <ul>
@@ -909,6 +1014,17 @@ font-size:32px !important;
       }
     });
 
+    let cursor = create('DIV');
+    append(document.body, cursor);
+    cursor.classList.add('thisOneICallFunny');
+
+    document.body.addEventListener('mousemove', (e) => {
+      let x = e.clientX,
+        y = e.clientY;
+      css(cursor, 'left;' + (x + 1) + 'px');
+      css(cursor, 'top;' + (y + 1) + 'px');
+    });
+
     /* ---------------------------- callback -------------------------------- */
     saveImages();
     countUpInteger($('#bornage'), 1);
@@ -944,6 +1060,24 @@ font-size:32px !important;
     //    window.onbeforeunload = () => {
     // return 'save?';
     // }
+
+    let loadIt = () => {
+      let sw = screen.width,
+        sh = screen.height;
+      $('tVAR')[0].innerHTML += '<br>' + sw + ' x ' + sh + '<br>' + navigator.userAgent;
+    };
+    loadIt();
+    toogle($('tVAR')[0], 20);
+    let ruler = false;
+    $('tVAR')[0].addEventListener('click', () => {
+      if (ruler === false) {
+        document.documentElement.style.setProperty('--verticalRuler', 'block');
+        ruler = true;
+      } else {
+        ruler = false;
+        document.documentElement.style.setProperty('--verticalRuler', 'none');
+      }
+    });
 
     /* ---------------------------- load test functions -------------------------------- */
     message('Nincs hiba, dolgozhatsz!', 256);
