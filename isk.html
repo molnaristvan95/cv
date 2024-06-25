@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description" content="This is my online CV">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ksenicz István Sztepanovics || Кшеніц Степан Степанович">
+  <meta name="keywords" content="cv, istvan, online">
+  <meta name="theme-color" content="#050">
+  <link rel="icon" type="image/png" href="./CV Folder/fav.png">
+  <title>C.V. Istvan Sztepanovics Ksenicz</title>
+  <style rel="stylesheet" type="text/css">
+    /* ------------------ base and templates ---------------------*/
+    @import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap');
+
+    *:root {
+      font-size: 16px;
+      --opened: 'page was opened: ??';
+    }
+
+    * {
+      box-sizing: border-box;
+      color: #ffab;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+    }
+
+    body#main {
+      margin: 0;
+      background: #000;
+      padding: 2vh 0 10vh 0;
+    }
+
+    body#main::before {
+      content: var(--opened);
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      font-size: 12px;
+      width: 64px;
+      overflow: hidden;
+      white-space: nowrap;
+      width: auto;
+    }
+
+    body#main:hover::before {
+      width: auto;
+    }
+
+    body>*:not(script) {
+      display: block;
+      margin: 1vh auto;
+      max-width: 98%;
+      border-radius: 4px;
+    }
+
+    img {
+      object-fit: contain;
+      image-rendering: optimizespeed;
+      -webkit-image-rendering: optimizespeed;
+    }
+
+    input,
+    button {
+      color: #ffab;
+      background: #000;
+    }
+
+    input[type="checkbox"] {
+      zoom: 2;
+      filter: invert(1);
+    }
+
+    input {
+      zoom: 1.5;
+      border-radius: 4px;
+    }
+
+    *:focus {
+      outline: yellow 1px solid;
+    }
+
+    button:focus,
+    input:focus,
+    summary:focus {
+      outline: none;
+    }
+
+    .clearfix {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .center {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .equal {
+      justify-content: space-around;
+    }
+
+    dialog#sms {
+      background: #000 !important;
+      color: #990;
+      top: 25%;
+      left: 0%;
+      width: 50%;
+      height: 50%;
+      position: fixed;
+      font-size: 24px;
+    }
+
+    ::-webkit-scrollbar-track:hover,
+    ::-webkit-scrollbar-thumb:hover {
+      cursor: pointer;
+    }
+
+    ::-webkit-scrollbar {
+      width: 20px;
+    }
+
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #040;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0f0;
+    }
+
+    .clicked {
+      animation: 1s ease-out wasclicked 1;
+    }
+
+    @keyframes wasclicked {
+      0% {
+        background: #0f0f;
+      }
+
+      100% {
+        background: #0000
+      }
+    }
+
+    hr {
+      width: 64%;
+      border: 2px outset #030;
+      border-radius: 50%;
+    }
+
+    footer {
+      opacity: .5;
+      position: fixed;
+      bottom: 0;
+      left: 2%;
+      width: 100%;
+      text-align: right;
+    }
+
+    footer a:after {
+      content: attr(href);
+    }
+
+    footer a:hover {
+      background: yellow;
+      color: #000;
+      zoom: 1.2;
+    }
+
+    hr {
+      width: 95%;
+      border-color: #999;
+      border-radius: 50% !important;
+      animation: highlighting 4s ease-out 64;
+    }
+
+    @keyframes highlighting {
+      0% {
+        width: 0%;
+        opacity: 0;
+        border-color: #999;
+      }
+
+      100% {
+        width: 95%;
+        opacity: 1;
+        border-color: #0ff;
+      }
+    }
+
+    /* ------------------ targeted elements ---------------------*/
+
+    figure {
+      position: relative;
+    }
+
+    #profilepic {
+      width: 25%;
+      border-radius: 50%;
+      box-shadow: 0 0 50px 5px orange;
+      animation: tocolour 60s linear 1;
+    }
+
+    @keyframes tocolour {
+      0% {
+        filter: grayscale(1);
+      }
+
+      100% {
+        filter: grayscale(0);
+      }
+    }
+
+    #name {
+      font-family: "Comforter Brush", cursive;
+      font-size: 5rem;
+      position: absolute;
+      bottom: -10%;
+      right: 0;
+      width: 100%;
+      height: auto;
+      text-align: center;
+    }
+
+    nav {
+      display: inline-block;
+      width: auto;
+      padding: 8px;
+      position: absolute;
+      top: 32px;
+      left: 8px;
+    }
+
+    nav>ul>li {
+      list-style-type: none;
+    }
+
+    nav>ul>li>img {
+      width: 2rem;
+      vertical-align: middle;
+    }
+
+    #agehas {
+      position: absolute;
+      top: 8%;
+      right: 40%;
+      font-size: 64px;
+    }
+
+    .sectionDates {
+      borde: 1px solid green;
+      padding: 16px;
+      position: relative;
+      margin-top: 5vh;
+      width: 100%;
+    }
+
+    .sectionDates>article {
+      width: 20vw;
+      height: 20vw;
+      background: radial-gradient(green 0%, #0000 60%);
+    }
+
+    .sectionDates>ul {
+      margin-left: 5%;
+    }
+
+    .sectionDates>ul>li {
+      margin-top: 3%;
+    }
+
+    .notes {
+      display: block;
+      text-indent: .5rem;
+    }
+
+    .sectionDates>article,
+    .sectionDates>ul {
+      float: left;
+    }
+
+    #learnings {}
+
+    #experience {
+      background: radial-gradient(#99f9 0%, #0000 60%);
+    }
+
+    #nfo {
+      background: radial-gradient(#ff09 0%, #0000 60%);
+    }
+
+    #nfo,
+    #learnings,
+    #experience {
+      transform: rotateZ(188deg);
+    }
+
+    ul span {
+      -webkit-text-stroke: .2px #000;
+      color: #fffa;
+    }
+
+    .sectionDates:nth-of-type(1) li {
+      list-style-type: circle;
+    }
+
+    .sectionDates:nth-of-type(2) li {
+      list-style-type: square;
+    }
+
+    .sectionDates:nth-of-type(3) li {
+      list-style-type: disclosure-closed;
+      ;
+    }
+
+    article>div {
+      animation: rotletters 5s linear 1;
+    }
+
+    @keyframes rotletters {
+      0% {
+        transform: rotate(0deg);
+      }
+    }
+
+
+    /* ------------------ media queries ---------------------*/
+
+    /* ------------------ black list quick test ---------------------*/
+
+  </style>
+  <base target="_blank">
+</head>
+
+
+<body id="main">
+  <dialog id="sms" class="flex center">Hiba! Error!</dialog>
+  <figure class="flex center equal">
+    <img id="profilepic" src="./CV Folder/prof.png" alt="This is a picture about me" title="A picture 'bout me">
+    <figcaption id="name">Ishtvan Stepanovich Ksenicz</figcaption>
+  </figure>
+  <div id="agehas">?</div>
+  <nav>
+    <ul>
+      <li><img src="./CV Folder/locationpoint.jpeg" alt="Location point pin" title="Where am I live aproximetly?"> XVI, Budapest</li>
+      <li><img src="./CV Folder/calendar.png" alt="Calendar of my birth" title="When did I born and where?"> august, <span id="bornage">1995</span>; Uzhgorod</li>
+      <li><img src="./CV Folder/cellphone.png" alt="Cellphone icon" title="Whats my number?"><del> +36 70 280 52 09</del> I never take unknown numbers</li>
+      <li><img src="./CV Folder/envelope.jpg" alt="Envelope icon" title="My email address"> 1995molnaristvan22@gmail.com</li>
+    </ul>
+  </nav>
+  <section class="sectionDates clearfix">
+    <article id="learnings">.--==## Studies ##==--.</article>
+    <ul>
+      <li><b>2001-2012</b></li>
+      <span class="notes">High school education</span>
+      <li><b>2012-2013</b></li>
+      <span class="notes">Hotel industry certification</span>
+      <span class="notes">U.V.K.U. - K.N.T.E.U.</span>
+      <li><b>2016-2017</b></li>
+      <span class="notes">Security certification</span>
+      <span class="notes">Oktopol 07 Ltd.</span>
+      <li><b>2017++</b></li>
+      <span class="notes">Website programer (still don't have certification because of self development)</span>
+      <span class="notes">W3Schools, StackOverflow, Css Tricks, Google Gemini, Microsoft Copilot, ChatGPT3 and many more</span>
+    </ul>
+  </section>
+  <hr>
+  <section class="sectionDates clearfix">
+    <article id="experience">.--==## Experience ##==--.</article>
+    <ul>
+      <li><b>2015 – 2017 Office DEPOT Ltd.</b></li>
+      <span class="notes">Security, salesman, I.T. salesperson</span>
+      <li><b>2017 – 2018 Lunar office building</b></li>
+      <span class="notes">Reception security, administrator</span>
+      <li><b>2018 – 2021 Retro Jeans Outlet</b></li>
+      <span class="notes">Security, salesman, electrician, assistant manager</span>
+      <li><b>2021 – 2023 Hervis sports and fashion trade Ltd.</b></li>
+      <span class="notes">Salesperson, consultant, bicycle mechanic, developer, advertisement developer</span>
+      <li><b>2024 - 2024 Media Markt Ltd.</b></li>
+      <span class="notes">Salesperson, consultant, developer</span>
+    </ul>
+  </section>
+  <hr>
+  <section class="sectionDates clearfix">
+    <article id="nfo">.--==## Nfo 'bout me ##==--.</article>
+    <ul>
+      <li><b>My knowledge of languages</b></li>
+      <span class="notes">Hungarian: C2; Ukrainian: B1-B2; English: B1-B2; Russian: A2-B1;</span>
+      <li><b>Hobbies what I like to do</b></li>
+      <span class="notes">Programing, hiking, camping in the middle of any forest, reading books, editing any type of media files, and mainly self developing</span>
+      <li><b>What I have learned in my previous jobs</b></li>
+      <span class="notes">To see the system in the chaos, to forge a team, to fit in with my peers, to notice when someone is weaker and help for that mate</span>
+      <li><b>What did I do on my previous workplaces</b></li>
+      <span class="notes">I made strict recommendations in order to reduce shoplifting, <br>I created Ms. Excel tables "beautified" with a lot of data and functions, <br>I designed and wrote data management and conversion programs for faster and easier work, <br>I improved the web search and the internal printer program, <br>I contributed to the stores' decorative to its beauty, <br>I helped my new colleagues integrate into the circle of team members, <br>created illustrations in Ms. Word for more comprehensible information, <br>increased the lighting in the darker parts of the store, <br>assessed the structural safety of the warehouse, suggested safer storage solutions, <br>added external information to incomplete product descriptions, <br>I wrote some application to calculate alot of data <br>and many other things <br>I contributed to the development of companies with mental and physical work.</span>
+      <li><b>What is important 4me?</b></li>
+      <span class="notes">competitive salary, 8-hour working hours, cooperation, decisiveness, respectful environment, logical way of thinking, <br>but what really matters is that there is a strongly positive and supportive atmosphere at my workplace.</span>
+    </ul>
+  </section>
+
+
+  <footer>&#169; <span id="actualYear">1995</span> Ksenicz István Sztepanovics &nbsp; &nbsp;
+    <small><small>
+        <br>
+        A programozó elérhetőségei:
+        <a href="tel:+36702805209"></a>
+        &nbsp; &nbsp;
+        <a href="mailto:1995molnaristvan22@gmail.com"></a>
+      </small></small>
+  </footer>
+  <script type="text/javascript" defer>
+    console.group();
+    console.time();
+    /* ---------------------------- base and templates -------------------------------- */
+    const abc = 'abcdefghijklmnopqrstuvwxyz ',
+      abcL = abc.toUpperCase(),
+      numbers = '0123456789',
+      create = (c) => {
+        return document.createElement(c);
+      },
+      append = (par, chil) => {
+        return par.appendChild(chil);
+      },
+      node = (variable, t) => {
+        let txt = document.createTextNode(t);
+        variable.appendChild(txt);
+        return;
+      },
+      event = (target, triger, func) => {
+        return target.setAttribute(triger, func);
+      },
+      substr = (a, b, c) => {
+        if (Number.isInteger(b) && Number.isInteger(c)) {
+          return a.substring(b, c);
+        } else {
+          return a.substring(1);
+        }
+      },
+      $ = (e) => {
+        let elem;
+        if (e[0] == '#') {
+          let x = substr(e);
+          elem = document.getElementById(x);
+        } else if (e[0] == '.') {
+          let x = substr(e);
+          elem = document.getElementsByClassName(x);
+        } else if (e[0] == 'n') {
+          let x = substr(e);
+          elem = document.getElementsByName(x);
+        } else if (e[0] == 't') {
+          let x = substr(e);
+          elem = document.getElementsByTagName(x);
+        }
+        return elem;
+      },
+      html = (el, h) => {
+        if (!h) {
+          return el.innerHTML;
+        } else {
+          return el.innerHTML = h;
+        }
+      },
+      css = (el, c) => {
+        let separ = c.split(';');
+        return el.style[separ[0]] = separ[1];
+      },
+      random = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+      message = (text, time) => {
+        const elem = document.getElementById('sms');
+        elem.style.display = 'flex';
+        elem.show();
+        elem.innerHTML = text;
+        window.setTimeout(() => {
+          elem.close();
+          elem.style.display = 'none';
+          elem.innerHTML = text;
+        }, time);
+      },
+      highlight = (elem) => {
+        elem.addEventListener('click', () => {
+          elem.classList.add('clicked');
+          window.setTimeout(() => {
+            elem.classList.remove('clicked');
+          }, 1000);
+        });
+      },
+      properties = (elem, prop) => {
+        let val = window.getComputedStyle(elem).getPropertyValue(prop);
+        return val;
+      },
+      highlightEveryOne = (boolean) => {
+        if (boolean === true) {
+          let all = document.querySelectorAll('*');
+          for (let x of all) {
+            if (x.nodeName == 'INPUT' || x.nodeName == 'BUTTON' || x.nodeName == 'TEXTAREA' || x.nodeName == 'SUMMARY') {
+              highlight(x);
+            }
+          }
+        }
+      },
+      locS = (cmd, key, val) => {
+        if (cmd == 'list') {
+          let infoes = '';
+          for (let i = 0; i < localStorage.length; i++) {
+            let keys = localStorage.key(i),
+              values = localStorage.getItem(keys);
+            infoes += i + ' / ' + keys + ' / ' + values + '<br><br><br>';
+            console.warn(i + ' / ' + keys + ' / ' + values);
+          }
+          let win = window.open('', '_blank');
+          win.document.body.innerHTML = infoes;
+        }
+        if (cmd == 'get' && !!key) {
+          let nfo = localStorage.getItem(key);
+          return nfo;
+        }
+        if (cmd == 'set' && !!key && !!val) {
+          localStorage.setItem(key, val);
+        }
+        if (cmd == 'del' && !!key) {
+          localStorage.removeItem(key);
+        }
+      },
+      dateObj = {
+        f: function() {
+          let days = 'sun,mon,tue,wed,thu,fri,sat',
+            arr = days.split(',');
+          this.d = new Date();
+          this.year = this.d.getFullYear();
+          this.month = this.d.getMonth() + 1;
+          this.date = this.d.getDate();
+          this.day = arr[this.d.getDay()];
+          this.hours = this.d.getHours();
+          this.minutes = this.d.getMinutes();
+          this.seconds = this.d.getSeconds();
+          let str = '';
+          for (let x in this) {
+            if (typeof this[x] != 'function' && x != 'd') {
+              str += this[x] + '.';
+            }
+          }
+          document.documentElement.style.setProperty('--opened', '"' + str + '"');
+          html($('#actualYear'), this.year);
+        }
+      },
+      blank = (quantity) => {
+        let string = '';
+        for (let x = 0; x < quantity; x++) {
+          let letter = random(0, (abc.length - 1));
+          string += abc[letter];
+        }
+        string = 'BEGIN_ ' + quantity + ' _ ' + string + ' _END';
+        return string;
+      },
+      toogle = (elem, min) => {
+        elem.innerHTML = '<span>More details onClick...</span><br>' + elem.innerHTML;
+        if (!min) {
+          min = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
+        }
+        if (!elem.getAttribute('data-orig-height')) {
+          elem.setAttribute('data-orig-height', elem.offsetHeight);
+          css(elem, 'overflow;hidden');
+          css(elem, 'transition;1s cubic-bezier(0,1,1,1) all');
+          css(elem, ('height;' + min + 'px'));
+        }
+        elem.addEventListener('click', () => {
+          if (!!elem.getAttribute('data-orig-height') && elem.offsetHeight != min || elem.offsetHeight > min) {
+            css(elem, ('height;' + min + 'px'));
+          } else {
+            css(elem, ('height;' + (elem.getAttribute('data-orig-height')) + 'px'));
+          }
+        });
+      },
+      saveImages = () => {
+        if (!!$('tIMG')[0]) {
+          for (let i of $('tIMG')) {
+            i.setAttribute('draggable', false);
+          }
+        }
+        return;
+      },
+      typeWriterMachine = (elem, time, loop) => {
+        css(elem, 'word-wrap;break-word');
+        if (!elem.getAttribute('data-twtext')) {
+          elem.setAttribute('data-twtext', html(elem));
+          elem.setAttribute('data-twcount', '0');
+          if (loop !== true) {
+            elem.setAttribute('data-twlent', (html(elem).length - 1));
+          } else {
+            elem.setAttribute('data-twlent', (html(elem).length));
+          }
+          elem.innerHTML = '';
+        }
+        let lent = parseFloat(elem.getAttribute('data-twlent')),
+          act = parseFloat(elem.getAttribute('data-twcount')),
+          str = elem.getAttribute('data-twtext');
+        if (act == lent || act > (lent - 1)) {
+          if (loop === true) {
+            elem.innerHTML = '';
+            act = 0;
+            elem.setAttribute('data-twcount', '0');
+            window.setTimeout(() => {
+              typeWriterMachine(elem, time, loop);
+            }, time);
+          }
+        } else {
+          if (act > (lent - 5)) {
+            window.setTimeout(() => {
+              typeWriterMachine(elem, time, loop);
+            }, 1024);
+          } else {
+            window.setTimeout(() => {
+              typeWriterMachine(elem, time, loop);
+            }, time);
+          }
+        }
+        elem.innerHTML += str[act];
+        act++;
+        elem.setAttribute('data-twcount', act);
+      },
+      countUpInteger = (el, time) => {
+        if (!el.getAttribute('data-countUp')) {
+          let max = parseFloat(el.innerHTML);
+          el.setAttribute('data-countUp', max);
+          html(el, '0');
+        }
+        let actual = parseFloat(html(el)),
+          max = el.getAttribute('data-countUp');
+        actual++;
+        html(el, actual);
+        if (actual < max) {
+          if (actual < (max - 1)) {
+            window.setTimeout(() => {
+              countUpInteger(el, time);
+            }, time);
+          } else {
+            window.setTimeout(() => {
+              countUpInteger(el, time);
+            }, 1024);
+          }
+
+        }
+      },
+      lightBox = (blackList) => {
+        let figure = create('FIGURE'),
+          img = create('IMG'),
+          figcaption = create('FIGCAPTION'),
+          div = create('DIV'),
+          leftBtn = create('BUTTON'),
+          rightBtn = create('BUTTON'),
+          closeBtn = create('BUTTON'),
+          lightBoxIndex = 0;
+        append(document.body, figure);
+        figure.id = 'lightBox';
+        img.id = 'myWide';
+        figcaption.id = 'figureOutDescription';
+        append(figure, img);
+        append(figure, figcaption);
+        append(figure, div);
+        append(figure, leftBtn);
+        append(figure, rightBtn);
+        append(figure, closeBtn);
+        for (let u of [leftBtn, rightBtn, closeBtn]) {
+          u.type = 'button';
+        }
+        html(leftBtn, '&#60;');
+        html(rightBtn, '&#62;');
+        html(closeBtn, 'x');
+        div.id = 'slideDiv';
+        leftBtn.id = 'lbLeftBtn';
+        rightBtn.id = 'lbRightBtn';
+        closeBtn.id = 'lbCloseBtn';
+        closeBtn.addEventListener('click', () => {
+          css(figure, 'display;none');
+        });
+
+        let sourceAndDescripton = {},
+          imgObj = () => {
+            for (let x of document.images) {
+              if (!!x.src) {
+                let description = [];
+                if (!!x.title) {
+                  description.push('Title: ' + x.title);
+                }
+                if (!!x.alt) {
+                  description.push(' Alt: ' + x.alt);
+                }
+                if (description.length < 2) {
+                  description = ['There is not found any Title or Alt text..', 404];
+                }
+                sourceAndDescripton[x.src] = description;
+              }
+            }
+            return sourceAndDescripton;
+          };
+        imgObj();
+
+        let explain = () => {
+          for (let x in sourceAndDescripton) {
+            let justImg = create('IMG');
+            append(div, justImg);
+            justImg.src = x;
+            justImg.addEventListener('click', () => {
+              $('#myWide').src = justImg.src;
+              for (let find in sourceAndDescripton) {
+                if (find == justImg.src) {
+                  $('#figureOutDescription').innerHTML = sourceAndDescripton[find];
+                }
+              }
+            });
+          }
+        };
+        explain();
+
+        let shifting = (plusOrMinus) => {
+          let actual = img.src,
+            theIndex = 0,
+            step = 1;
+          for (let ac = 0; ac < div.children.length; ac++) {
+            if (div.children[ac].src == actual) {
+              theIndex = ac;
+            }
+            css(div.children[ac], 'border;none');
+            css(div.children[ac], 'transform;none');
+          }
+          plusOrMinus == '+' ? theIndex++ : theIndex--;
+
+
+          if (theIndex < 0) {
+            theIndex = (div.children.length - 1);
+          } else if (theIndex > div.children.length - 1) {
+            theIndex = 0;
+          }
+          img.src = div.children[theIndex].src;
+          css(div.children[theIndex], 'border;2px outset green');
+          css(div.children[theIndex], 'transform;scale(1.7)');
+          html(figcaption, sourceAndDescripton[img.src]);
+        };
+        leftBtn.addEventListener('click', () => {
+          shifting('-');
+        });
+        rightBtn.addEventListener('click', () => {
+          shifting('+');
+        });
+        const lbcss = `
+/* ------ Extended CSS for the LightBox from JScript -------- */
+#lightBox, #lightBox > *:not(button){
+border:none !important;
+outline:none;
+}
+
+#lightBox{
+display:block;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+max-width:100% !important;
+margin:0;
+padding:4px;
+z-index:99;
+}
+
+#lightBox > img{
+display:block;
+width:100%;
+height:100%;
+position:absolute;
+top:0;
+left:0;
+object-fit: contain;
+image-rendering: optimizespeed;
+-webkit-image-rendering: optimizespeed;
+}
+
+#lightBox > figcaption{
+position:absolute;
+bottom:16%;
+left:0;
+width:100%;
+height:auto;
+min-height:5%;
+background:#99f3;
+text-shadow:1px 1px 3px #000;
+}
+
+#slideDiv{
+position:absolute;
+min-width:100%;
+height:16%;
+background:#0ff3;
+bottom:0;
+left:0;
+overflow-X:scroll;
+display:flex;
+align-items:center;
+}
+
+#slideDiv > img{
+margin-left:8px;
+}
+
+#lightBox > button{
+position:absolute;
+opacity:.5;
+background:#0000;
+color:#9999;
+font-size:128px;
+padding:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+width:48vw;
+height:25vw;
+border-radius:8px;
+transition:.2s linear all;
+border:none;
+}
+
+#lightBox > button:hover{
+color:#fff;
+text-shadow:2px 2px 5px #000;
+}
+
+#lbLeftBtn{
+left:0%;
+top:16%;
+}
+
+#lbRightBtn{
+right:0%;
+top:16%;
+}
+
+#lbCloseBtn{
+width:4vw !important;
+height:4vw !important;
+right:2vw;
+top:2vw;
+font-size:32px !important;
+}
+        `;
+        $('tSTYLE')[0].innerHTML += lbcss;
+      },
+      circleStamp = (elem) => {
+        let contex = elem.innerHTML,
+          lent = contex.length,
+          deg = (360 / lent),
+          index = 0;
+        if (properties(elem, 'position') == 'static') {
+          css(elem, 'position;relative');
+        }
+        css(elem, 'border-radius;50%');
+        elem.innerHTML = '';
+        for (let letters of contex) {
+          let one = create('DIV'),
+            actDeg = (deg * index);
+          html(one, letters);
+          append(elem, one);
+          css(one, 'transform;rotateZ(' + actDeg + 'deg)');
+          css(one, 'border-radius;50%');
+          css(one, 'position;absolute');
+          css(one, 'width;auto');
+          css(one, 'height;100%');
+          css(one, 'left;50%');
+          css(one, 'top;0%');
+          css(one, 'margin;0');
+          index++;
+        }
+      };
+
+    /* ---------------------------- targeted functions -------------------------------- */
+
+    let countMyAge = (y, m) => {
+      dateObj.f();
+      let year = dateObj.year - y,
+        month = dateObj.month - m;
+      if (month < 0) {
+        year--;
+      }
+      return year;
+    };
+
+    document.documentElement.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      dateObj.f();
+      alert('The time is now: ' + dateObj.hours + ':' + dateObj.minutes + ' :D\nRight click is bad idea but better than F12 or Ctrl+Shift+I :)');
+    });
+    document.documentElement.addEventListener('keydown', (k) => {
+      let key = k.key;
+      if (key === 'F12' || key === 'Control') {
+        alert('Nice try: ' + key);
+        location.replace('close/kiosk');
+      }
+    });
+
+    /* ---------------------------- callback -------------------------------- */
+    saveImages();
+    countUpInteger($('#bornage'), 1);
+    typeWriterMachine($('#name'), 128, true);
+    html($('#agehas'), countMyAge(1995, 8));
+    countUpInteger($('#agehas'), 64);
+    circleStamp($('#learnings'));
+    circleStamp($('#experience'));
+    circleStamp($('#nfo'));
+    /* ---------------------------- patch functions -------------------------------- */
+    let justMe = {
+      html: document.documentElement.innerHTML.length,
+      css: parseFloat(document.getElementsByTagName('STYLE')[0].innerHTML.length),
+      head: eval(document.head.innerHTML.length - parseFloat(document.getElementsByTagName('STYLE')[0].innerHTML.length)),
+      js: parseFloat(document.scripts[0].innerHTML.length),
+      body: eval(document.body.innerHTML.length - parseFloat(document.scripts[0].innerHTML.length)),
+      fun: function() {
+        for (let x in this) {
+          if (typeof this[x] != 'function') {
+            let strr = this[x].toString(),
+              numm = strr.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            console.log(x + ' : ' + numm);
+          }
+        }
+      }
+    };
+    justMe.fun();
+
+    dateObj.f();
+
+    highlightEveryOne(true);
+
+    //    window.onbeforeunload = () => {
+    // return 'save?';
+    // }
+
+    /* ---------------------------- load test functions -------------------------------- */
+    message('Nincs hiba, dolgozhatsz!', 256);
+    console.log('%cScript runs well!', 'font-size:32px; color:orange;');
+    console.timeEnd();
+
+  </script>
+</body>
+
+</html>
